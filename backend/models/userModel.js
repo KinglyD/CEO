@@ -22,8 +22,18 @@ const createUsersTable = async () => {
         name VARCHAR(255) NOT NULL,
         email VARCHAR(255) UNIQUE NOT NULL,
         password VARCHAR(255),
-        role VARCHAR(50) NOT NULL,
-        created_at TIMESTAMP DEFAULT NOW()
+        phone_number VARCHAR(20),
+        whatsapp_number VARCHAR(20),
+        notification_preferences JSONB DEFAULT '{"email": true, "whatsapp": false, "in_app": true}'::jsonb,
+        org_id INTEGER REFERENCES organizations(id),
+        active BOOLEAN DEFAULT true,
+        is_verified BOOLEAN DEFAULT false,
+        verification_token VARCHAR(255),
+        reset_token VARCHAR(255),
+        reset_token_expiry TIMESTAMP,
+        last_login TIMESTAMP,
+        created_at TIMESTAMP DEFAULT NOW(),
+        updated_at TIMESTAMP DEFAULT NOW()
       )
     `);
     console.log('✅ Users table created or already exists');

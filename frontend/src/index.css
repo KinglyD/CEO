@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-matte text-graytext font-inter antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-clash text-white;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gold text-matte px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-opacity-90;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-gold text-gold px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-gold hover:text-matte;
+  }
+
+  .nav-link {
+    @apply text-graytext hover:text-gold transition-colors duration-300;
+  }
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.scale-up {
+  transition: transform 0.3s ease;
+}
+
+.scale-up:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
